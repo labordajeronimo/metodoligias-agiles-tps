@@ -1,23 +1,68 @@
-# Resolución: Trabajo Práctico de Fundamentos Ágiles
+# Resolución: Práctica 1 - Metodologías de Desarrollo en Cascada
 
 **Alumno:** Jerónimo Laborda
 **Materia:** Metodologías Ágiles (2026)
+**Contexto de Práctica:** Ciclo de vida estructurado (Cascada) aplicado a un Sistema de Gestión de Inventario.
 
 ---
-Actividad: Selección de 4 principios básicos del Manifiesto Ágil
 
-Imaginemos que somos un equipo debatiendo sobre los 12 principios del Manifiesto Ágil. Si tuviéramos que elegir solo cuatro que consideramos esenciales para que un proyecto tenga éxito, serían estos:
+## 1. Análisis de Requerimientos
 
-A continuación, se detalla la selección y la justificación de nuestro "equipo":
+### Ejercicio 1: Requisitos Funcionales y No Funcionales
 
-1.  **"Nuestra mayor prioridad es satisfacer al cliente mediante la entrega temprana y continua de software con valor."**
-    - **Por qué lo elegimos:** Este es el principio fundamental, el norte de todo. De nada sirve el código más elegante si el cliente espera un año para ver algo y, cuando lo ve, no le sirve. Entregar valor de a poco y de forma continua nos permite obtener feedback, corregir el rumbo y asegurarnos de que estamos construyendo lo correcto.
+#### Requisitos Funcionales (RF)
+1. **RF-01 (Autenticación):** El sistema debe permitir el inicio de sesión y cierre de sesión seguro para usuarios administradores y operadores.
+2. **RF-02 (Alta de Productos):** El sistema debe permitir registrar un nuevo producto capturando: Nombre, Código de Barra (SKU), Categoría, Stock Inicial, Precio Unitario y Proveedor.
+3. **RF-03 (Modificación y Baja):** El sistema debe permitir editar los datos de un producto existente y realizar la baja lógica del mismo.
+4. **RF-04 (Control de Stock):** El sistema debe registrar las entradas (compras) y salidas (ventas/mermas) de mercadería, actualizando el inventario en tiempo real.
+5. **RF-05 (Alertas de Stock Mínimo):** El sistema debe listar y emitir una alerta visual cuando un producto alcance su punto de reposición configurado.
 
-2.  **"Aceptamos que los requisitos cambien, incluso en etapas tardías del desarrollo. Los procesos Ágiles aprovechan el cambio para proporcionar ventaja competitiva al cliente."**
-    - **Por qué lo elegimos:** Esto es lo que define a la agilidad. El mundo real cambia, y los requisitos también. Un equipo ágil no se queja del cambio, sino que lo ve como una oportunidad. Adaptarse rápido a una nueva necesidad del mercado es lo que le da al cliente una ventaja sobre su competencia.
+#### Requisitos No Funcionales (RNF)
+1. **RNF-01 (Disponibilidad):** La aplicación web debe mantener una disponibilidad del 99.5% durante el horario comercial operativo.
+2. **RNF-02 (Rendimiento):** El tiempo de respuesta para las consultas de stock y la renderización de las tablas de inventario no debe superar los 2 segundos.
+3. **RNF-03 (Seguridad):** Todas las contraseñas en la base de datos deben almacenarse cifradas mediante un algoritmo robusto (ej. BCrypt).
+4. **RNF-04 (Portabilidad/Compatibilidad):** El sistema debe ser una aplicación web completamente responsiva y compatible con los navegadores modernos (Chrome, Firefox, Safari, Edge).
 
-3.  **"Los responsables de negocio y los desarrolladores trabajamos juntos de forma cotidiana durante todo el proyecto."**
-    - **Por qué lo elegimos:** Este principio ataca de raíz uno de los mayores problemas históricos del software: el "teléfono descompuesto" entre quienes piden y quienes hacen. Cuando el cliente y los desarrolladores hablan todos los días, los malentendidos desaparecen y el equipo técnico puede tomar mejores decisiones porque entiende el porqué de las cosas.
+---
 
-4.  **"A intervalos regulares el equipo reflexiona sobre cómo ser más efectivo para a continuación ajustar y perfeccionar su comportamiento en consecuencia."**
-    - **Por qué lo elegimos:** Este es el motor de la mejora continua. Ningún equipo es perfecto. Este principio, que en Scrum se materializa en la "Retrospectiva", obliga al equipo a parar la pelota, mirarse al espejo y preguntarse: "¿Cómo podemos trabajar mejor juntos?". Un equipo que hace esto de forma honesta y sin buscar culpables, está destinado a mejorar sprint tras sprint.
+### Ejercicio 2: Caso de Uso "Agregar un nuevo producto"
+
+* **ID:** CU-01
+* **Nombre:** Agregar un nuevo producto.
+* **Actor Principal:** Operador de Inventario / Administrador.
+* **Precondición:** El usuario debe estar autenticado en el sistema y posicionado en el panel de inventario.
+* **Flujo Básico (Felicidad):**
+  1. El actor hace clic en el botón "Agregar Producto".
+  2. El sistema despliega un formulario solicitando los datos del producto (Nombre, SKU, Categoría, Stock, Precio).
+  3. El actor completa todos los campos obligatorios y presiona "Guardar".
+  4. El sistema valida que el SKU no esté duplicado y que los valores numéricos sean positivos.
+  5. El sistema persiste el nuevo registro en la base de datos.
+  6. El sistema muestra un mensaje de éxito: "Producto registrado correctamente" y refresca la grilla de inventario.
+* **Flujos Alternativos / Excepciones:**
+  * **4.a. SKU Duplicado:** El sistema detecta que el código ya existe, detiene la persistencia, marca el campo en rojo y muestra el mensaje: "Error: El SKU ingresado ya pertenece a otro producto".
+  * **4.b. Campos Vacíos:** El sistema detecta que faltan datos obligatorios, bloquea el envío y muestra el mensaje: "Por favor, complete todos los campos marcados con asterisco (*) ".
+* **Postcondición:** El nuevo producto queda disponible en el catálogo y su stock inicial impacta en los totales.
+
+---
+
+## 2. Diseño del Sistema
+
+### Ejercicio 3: Diagrama de Flujo de Datos (DFD - Nivel 1)
+
+```mermaid
+graph TD
+    User([Operador/Admin]) -->|1. Datos del Producto| Form[Formulario Web Frontend]
+    Form -->|2. Petición POST /api/productos| Controller[Controlador de Productos Backend]
+    
+    subgraph Servidor de Aplicación Backend
+        Controller -->|3. Validar Datos y SKU| Service[Servicio de Lógica de Negocio]
+    end
+    
+    subgraph Capa de Datos
+        Service -->|4. INSERT INTO productos| DB[(Base de Datos SQL)]
+        DB -->|5. Confirmación de Persistencia| Service
+    end
+    
+    Service -->|6. Respuesta HTTP 201 Created| Controller
+    Controller -->|7. Mensaje de Éxito e Inventario Actualizado| Form
+    Form -->|8. Renderiza Alerta y Refresca Tabla| User
