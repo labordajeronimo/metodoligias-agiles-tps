@@ -1,0 +1,13 @@
+Para que un software sea flexible de verdad (o sea, que pueda adaptarse a cambios sin que se convierta en una pesadilla de mantener), hay que tomar buenas decisiones desde el principio. No es magia, es ingeniería.
+
+Aquí presento cinco elementos que, para mí, son clave para construir software flexible:
+
+1.  **Arquitectura Modular (o Microservicios):** En vez de hacer un "monolito" gigante donde todo está mezclado, es mejor dividir el sistema en partes más pequeñas e independientes (módulos o microservicios). Estas partes se hablan entre sí a través de APIs bien definidas. La gran ventaja es que se puede cambiar, actualizar o incluso reescribir un módulo sin afectar al resto del sistema. Es como cambiar una pieza de un motor sin tener que desarmarlo por completo.
+
+2.  **Principios SOLID y Patrones de Diseño:** A nivel de código, la flexibilidad se logra con un diseño limpio. Los principios SOLID nos dan las reglas para eso, buscando que cada clase tenga una sola responsabilidad y que las dependencias entre ellas sean mínimas. Usar patrones de diseño (como Inyección de Dependencias o Strategy) es como usar soluciones probadas para problemas comunes, lo que nos permite cambiar comportamientos en el futuro sin tener que tocar el núcleo del código.
+
+3.  **Pruebas Automatizadas:** Puede sonar raro, pero lo que realmente nos da la libertad para cambiar el código sin miedo son las pruebas automatizadas. Tener una buena cobertura de tests (unitarios, de integración, etc.) actúa como una red de seguridad. El equipo puede refactorizar, mejorar y añadir funcionalidades con la confianza de que si algo se rompe, las pruebas lo van a detectar al instante. Sin pruebas, cada cambio es un riesgo.
+
+4.  **Integración y Entrega Continua (CI/CD):** La flexibilidad no es solo del código, sino también del proceso de entrega. Un pipeline de CI/CD automatiza todo: desde que un desarrollador sube un cambio hasta que ese cambio está en producción. Esto permite entregar valor al usuario de forma constante y segura. Si algo sale mal, se puede revertir a la versión anterior con un solo clic. Es la agilidad llevada a la infraestructura.
+
+5.  **Feature Toggles (o Banderas de Funcionalidad):** Esta es una técnica muy potente. Consiste en poner "interruptores" en el código para prender o apagar funcionalidades sin necesidad de hacer un nuevo despliegue. Con esto podemos, por ejemplo, lanzar una nueva función solo para un 10% de los usuarios, probarla en un entorno real y, si algo falla, simplemente "apagarla" desde un panel de control. Da una flexibilidad enorme para experimentar y lanzar cambios de forma segura.
