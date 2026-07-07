@@ -4,55 +4,20 @@
 **Materia:** Metodologías Ágiles (2026)
 
 ---
+Actividad: Selección de 4 principios básicos del Manifiesto Ágil
 
-## 1. El Software de Valor y el Factor Humano
+Imaginemos que somos un equipo debatiendo sobre los 12 principios del Manifiesto Ágil. Si tuviéramos que elegir solo cuatro que consideramos esenciales para que un proyecto tenga éxito, serían estos:
 
-* **Transformar necesidad en valor:** Desarrollar software implica entender el problema, diseñar, construir, probar, desplegar y mantener para generar valor real, es decir, "sacar el dolor" o mejorar la vida del usuario.
-* **El riesgo más grave:** Existen dos grandes riesgos: resolver mal el problema correcto (solución técnica deficiente) o resolver bien el problema incorrecto (sistema bien hecho pero inútil). El segundo es el más grave porque genera una falsa ilusión de éxito.
-* **Las personas primero:** El software es un trabajo de conocimiento construido por y para personas dentro de organizaciones. Los métodos ágiles las priorizan porque en el proceso aparecen malentendidos, diferencias de lenguaje entre usuarios y desarrolladores, y resistencia al cambio.
+A continuación, se detalla la selección y la justificación de nuestro "equipo":
 
----
+1.  **"Nuestra mayor prioridad es satisfacer al cliente mediante la entrega temprana y continua de software con valor."**
+    - **Por qué lo elegimos:** Este es el principio fundamental, el norte de todo. De nada sirve el código más elegante si el cliente espera un año para ver algo y, cuando lo ve, no le sirve. Entregar valor de a poco y de forma continua nos permite obtener feedback, corregir el rumbo y asegurarnos de que estamos construyendo lo correcto.
 
-## 2. Brooks y la Complejidad Esencial ("No Silver Bullet")
+2.  **"Aceptamos que los requisitos cambien, incluso en etapas tardías del desarrollo. Los procesos Ágiles aprovechan el cambio para proporcionar ventaja competitiva al cliente."**
+    - **Por qué lo elegimos:** Esto es lo que define a la agilidad. El mundo real cambia, y los requisitos también. Un equipo ágil no se queja del cambio, sino que lo ve como una oportunidad. Adaptarse rápido a una nueva necesidad del mercado es lo que le da al cliente una ventaja sobre su competencia.
 
-Según Fred Brooks, no existe una "bala de plata" o solución mágica que resuelva los problemas del desarrollo. El cuello de botella de la industria está en entender y diseñar bien, no en programar más rápido.
+3.  **"Los responsables de negocio y los desarrolladores trabajamos juntos de forma cotidiana durante todo el proyecto."**
+    - **Por qué lo elegimos:** Este principio ataca de raíz uno de los mayores problemas históricos del software: el "teléfono descompuesto" entre quienes piden y quienes hacen. Cuando el cliente y los desarrolladores hablan todos los días, los malentendidos desaparecen y el equipo técnico puede tomar mejores decisiones porque entiende el porqué de las cosas.
 
-* **Tareas Accidentales:** Son las vinculadas a representar las estructuras conceptuales en lenguajes y herramientas específicas. Los avances tecnológicos las redujeron, pero no solucionaron la raíz del problema.
-* **Tareas Esenciales:** Implican entender el dominio del negocio, definir requerimientos y diseñar las estructuras conceptuales abstractas.
-
-### Las 4 Propiedades Esenciales del Software:
-1. **Complejidad:** Posee una gran cantidad de partes abstractas, estados e interacciones dinámicas.
-2. **Conformidad:** Debe ajustarse de manera obligatoria a leyes, procesos de negocio y sistemas heredados (*legacy*).
-3. **Cambiabilidad:** Cambia constantemente porque mutan el negocio, los usuarios y las tecnologías.
-4. **Invisibilidad:** Su estructura es abstracta y no se puede representar físicamente.
-
----
-
-## 3. Dimensiones de la Calidad y Deuda Técnica
-
-La calidad no aparece por casualidad y requiere foco, proceso y medición constante. El producto se evalúa en dos dimensiones principales:
-
-* **The Right Thing (El producto correcto):** Mira al usuario y al negocio; se enfoca en resolver la necesidad adecuada.
-* **The Thing Right (Correctamente construido):** Mira hacia adentro; se enfoca en el diseño técnico, las pruebas y la mantenibilidad.
-
-> **La Deuda Técnica:** Es el costo futuro generado por decisiones técnicas pobres, atajos, falta de pruebas o mala arquitectura para cumplir con un plazo inmediato. Afecta directamente la velocidad futura del equipo, pagándose más adelante con lentitud, errores y dificultad para cambiar.
-
----
-
-## 4. Evolución de Enfoques: Predictivo frente a Adaptativo
-
-* **Enfoque Predictivo (Waterfall / Cascada y Modelo V):** Modelo secuencial donde cada fase se completa antes de pasar a la siguiente y las pruebas se concentran al final. Funciona si el problema es estable y los requisitos son claros. Si hay cambios, modificar el rumbo es muy costoso y el cliente pasa meses sin ver software funcional.
-* **Enfoque Adaptativo (Ágil):** Es un proceso iterativo, flexible y adaptable que asume que el conocimiento aparece durante el desarrollo. En lugar de anticipar el futuro, aprende del cambio y planifica al detalle únicamente la próxima iteración. Mitiga la incertidumbre construyendo por partes pequeñas para validar, aprender y ajustar junto a un cliente activo.
-
----
-
-## 5. El Manifiesto Ágil (2001)
-
-Surgió como respuesta de 17 firmantes destacados de la industria ante la rigidez de las metodologías pesadas tradicionales. Se fundamenta en **4 Valores Esenciales**, donde se priorizan los elementos de la izquierda por sobre los de la derecha:
-
-1. **Individuos e interacciones** sobre procesos y herramientas.
-2. **Software funcionando** sobre documentación extensiva.
-3. **Colaboración con el cliente** sobre negociación contractual.
-4. **Respuesta ante el cambio** sobre seguir un plan.
-
-Esto no elimina los procesos, la documentación ni los planes; simplemente evita que se coloquen por encima de las personas, el software funcional y la adaptación al cambio.
+4.  **"A intervalos regulares el equipo reflexiona sobre cómo ser más efectivo para a continuación ajustar y perfeccionar su comportamiento en consecuencia."**
+    - **Por qué lo elegimos:** Este es el motor de la mejora continua. Ningún equipo es perfecto. Este principio, que en Scrum se materializa en la "Retrospectiva", obliga al equipo a parar la pelota, mirarse al espejo y preguntarse: "¿Cómo podemos trabajar mejor juntos?". Un equipo que hace esto de forma honesta y sin buscar culpables, está destinado a mejorar sprint tras sprint.
