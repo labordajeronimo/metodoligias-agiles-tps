@@ -55,4 +55,4 @@ Surgió como respuesta de 17 firmantes destacados de la industria ante la rigide
 3. **Colaboración con el cliente** sobre negociación contractual.
 4. **Respuesta ante el cambio** sobre seguir un plan.
 
-*Nota:* Esto no elimina los procesos, la documentación ni los planes; simplemente evita que se coloquen por encima de las personas, el software funcional y la adaptación al cambio.
+Esto no elimina los procesos, la documentación ni los planes; simplemente evita que se coloquen por encima de las personas, el software funcional y la adaptación al cambio.
